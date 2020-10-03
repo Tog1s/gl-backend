@@ -1,0 +1,10 @@
+<%= form_with(model: @server, local: true, scope: :server) do |f| %>
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <%= f.text_field :url, autocomplete: "url", class: 'input', placeholder: 'Добавить url' %>
+    </div>
+    <div class="control">
+      <%= f.submit "Создать", class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>

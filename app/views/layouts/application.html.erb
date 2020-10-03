@@ -8,11 +8,45 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    
   </head>
 
   <body>
+    <div class="main-content">
+     <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <%= link_to('GreenLine', root_path, class: "navbar-item") %>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+          <div class="navbar-start">
+          </div>
+          <div class="navbar-end">
+            <%= link_to('Зарегистрироваться', new_user_registration_path, class: "navbar-item") if !signed_in? %>
+            <%= link_to('Войти', new_user_session_path, class: "navbar-item") if !signed_in? %>
+            <%= link_to('Дашбоард', servers_path, class: "navbar-item") if signed_in? %>
+            <%= link_to('Выйти', destroy_user_session_path, method: :delete, class: "navbar-item") if signed_in? %>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
-    <%= javascript_pack 'application' %>
+
+    </div>
+    <footer class="footer fix-footer">
+      <div class="content has-text-centered">
+        <p>
+          GreenLine
+        </p>
+      </div>
+    </footer>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
