@@ -11,9 +11,11 @@ class ServersController < ApplicationController
     @server = current_user.servers.build(server_params)
 
     if @server.save
-      redirect_to controller: 'servers', action: 'index', notice: 'Адрес сервера добавлен'
+      redirect_to controller: 'servers', action: 'index'
+      flash.notice = 'Адрес сервера добавлен'
     else
-      redirect_to controller: 'servers', action: 'index', notice: 'Возникла ошибка при сохранении'
+      redirect_to controller: 'servers', action: 'index'
+      flash.notice = 'Возникла ошибка при сохранении'
     end
   end
 

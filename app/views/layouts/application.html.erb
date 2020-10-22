@@ -34,19 +34,32 @@
         </div>
       </nav>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |type, msg| %>
+      <div class="notification is-primary">
+        <button class="delete"></button>
+        <%= msg %>
+      </div>
+    <% end %>
 
     <%= yield %>
 
     </div>
     <footer class="footer fix-footer">
       <div class="content has-text-centered">
-        <p>
-          GreenLine
-        </p>
+
       </div>
     </footer>
     <%= javascript_pack_tag 'application' %>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+          var $notification = $delete.parentNode;
+
+          $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

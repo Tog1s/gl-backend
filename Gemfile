@@ -11,6 +11,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'webpacker'
 
+# gem 'redis'
+# gem 'redis-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
