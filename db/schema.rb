@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_083108) do
+ActiveRecord::Schema.define(version: 2020_10_29_164757) do
+
+  create_table "counters", force: :cascade do |t|
+    t.string "code"
+    t.float "delay"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "servers_id"
+    t.index ["servers_id"], name: "index_counters_on_servers_id"
+  end
 
   create_table "servers", force: :cascade do |t|
     t.string "url"
@@ -38,5 +47,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_083108) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "counters", "servers", column: "servers_id"
   add_foreign_key "servers", "users"
 end

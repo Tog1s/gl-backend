@@ -8,7 +8,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p><%= server.url %> Status Code: 200 Latency: 40 ms </p>
+              <p><%= server.url %> Status Code: <%= get_status_code(server.id) %> Latency: <%= get_latency(server.id) %> ms </p>
             </div>
           </div>
         </div>

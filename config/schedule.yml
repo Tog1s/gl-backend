@@ -1,0 +1,19 @@
+queue_urls_job:
+  cron: "*/1 * * * *"
+  class: ActiveJob::QueueAdapters::ResqueAdapter::JobWrapper
+  queue: urls
+  description: Set urls to redis
+  args:
+    job_class:  QueueUrlsJob
+    queue_name: urls
+    arguments: []
+
+get_statistics_job:  
+  cron: "*/1 * * * *"
+  class: ActiveJob::QueueAdapters::ResqueAdapter::JobWrapper
+  queue: statistics
+  description: Get statistics from redis
+  args:
+    job_class:  GetStatisticsJob
+    queue_name: statistics
+    arguments: []

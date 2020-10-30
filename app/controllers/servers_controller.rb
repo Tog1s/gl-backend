@@ -4,7 +4,7 @@ class ServersController < ApplicationController
   before_action :set_server, only: []
 
   def index
-    @servers = Server.where(:user_id => current_user.id)
+    @servers = Server.where(user_id: current_user.id)
   end
 
   def create
