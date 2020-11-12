@@ -3,11 +3,11 @@ class QueueUrlsJob < ApplicationJob
   @queue = :urls
   def perform
     redis = Redis.new(
-        host: "localhost",
-        reconnect_attempts: 8,
-        reconnect_delay: 2
+      host: 'redis',
+      reconnect_attempts: 8,
+      reconnect_delay: 2
     )
     servers = Server.all
-    redis.set "urls", servers.to_json
+    redis.set 'urls', servers.to_json
   end
 end

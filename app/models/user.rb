@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :servers
 
-  validates :email, presence: true, length: {maximum: 255}
+  validates :email, presence: true, length: { maximum: 255 }
   validates :email, uniqueness: true
-  
 end

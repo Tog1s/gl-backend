@@ -3,15 +3,15 @@ class GetStatisticsJob < ApplicationJob
   @queue = :statistics
   def perform
     redis = Redis.new(
-      host: "localhost",
+      host: 'redis',
       reconnect_attempts: 8,
       reconnect_delay: 2
     )
 
     queue_data_present = true
 
-    while queue_data_present do
-      response = redis.lpop "statistics"
+    while queue_data_present
+      response = redis.lpop 'statistics'
       if response.nil?
         queue_data_present = false
       else
